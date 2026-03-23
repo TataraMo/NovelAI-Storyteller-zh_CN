@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         NovelAI 全局汉化
+// @name         NovelAI 简体中文汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
 // @version      3.4
 // @description  NovelAI Full Site Localization into Simplified Chinese
