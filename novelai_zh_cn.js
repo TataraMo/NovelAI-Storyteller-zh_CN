@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      3.36
+// @version      3.37
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理
 // @match        https://novelai.net/*
@@ -630,7 +630,6 @@
         'Select an Entry from the left to edit it.': '从左侧选择一个条目进行编辑。',
         'No Category selected.': '未选择分类。',
         'Select a Category from the left to edit it.': '从左侧选择一个分类进行编辑。',
-        'a recurring festival, Battle of Ryris (coup, demons)...': '反复出现的节日，Ryris战役（政变，恶魔）...',
 
         // --- 生成器 (Generator) ---
         'Add Context (advanced)': '添加上下文 (高级)',
@@ -957,6 +956,7 @@
         'Entry': '条目',
         'Entry has no keys': '该条目未设置关键词',
         'Entry has no keys.': '该条目未设置关键词。',
+        'The text here will be searched for Lorebook activation keys, and the matching Lore placed in context.': '将在此处的文本中搜索世界书激活关键词，并将匹配的设定放入上下文中。',
         'Conditions': '触发条件',
         'Let the AI fill in the blanks for you! Choose the type of entry from the list, enter what you want to generate, and hit generate. You can also have the AI add to text written in the Lore entry just like in the Story.': '让 AI 帮你填补空白！选择类型，输入要求，然后点击生成。你也可以让 AI 直接续写条目，就像在故事正文中一样。',
         'A Lorebook entry is activated and its text placed in context whenever one of its keys is found in the recent story. Keys are case-insensitive.': '每当在最近的故事正文中找到对应的激活关键词时，该条目就会被激活，其文本将被放入上下文中。关键词不区分大小写。',
