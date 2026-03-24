@@ -631,7 +631,6 @@
         'Select an Entry from the left to edit it.': '从左侧选择一个条目进行编辑。',
         'No Category selected.': '未选择分类。',
         'Select a Category from the left to edit it.': '从左侧选择一个分类进行编辑。',
-        'a recurring festival, Battle of Ryris (coup, demons)...': '反复出现的节日，Ryris战役（政变，恶魔）...',
 
         // --- 生成器 (Generator) ---
         'Add Context (advanced)': '添加上下文 (高级)',
