@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      3.38
+// @version      3.39
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理
 // @match        https://novelai.net/*
@@ -44,7 +44,7 @@
         if (!isTitleModificationEnabled) return;
         if (pathname.includes('/inspect')) {
             document.title = '检视图像参数 - NovelAI';
-        } else if (pathname.includes('/image')) {
+        } else if (pathname.includes('/image') || pathname.includes('/imagetools')) {
             const originalTitle = document.title;
             document.title = '图像生成 - NovelAI';
             Object.defineProperty(document, 'title', {
@@ -57,7 +57,7 @@
     }
 
     // ==========================================
-    // 2. 翻译字典库 (深度合并3.25与3.30，补充3.36修正)
+    // 2. 翻译字典库 (保持不变)
     // ==========================================
 
     const commonTranslationMap = {
@@ -631,6 +631,7 @@
         'Select an Entry from the left to edit it.': '从左侧选择一个条目进行编辑。',
         'No Category selected.': '未选择分类。',
         'Select a Category from the left to edit it.': '从左侧选择一个分类进行编辑。',
+        'a recurring festival, Battle of Ryris (coup, demons)...': '反复出现的节日，Ryris战役（政变，恶魔）...',
 
         // --- 生成器 (Generator) ---
         'Add Context (advanced)': '添加上下文 (高级)',
@@ -1080,32 +1081,35 @@
     };
 
     // ==========================================
-    // 3. 核心翻译引擎与逻辑 (基于3.30深度引擎优化)
+    // 3. 核心翻译引擎与逻辑
     // ==========================================
 
     let activeTranslationMap = {};
     let regex;
 
-    // 路由分发
-    const pathname = window.location.pathname;
-    if (pathname.includes('/image')) {
-        activeTranslationMap = Object.assign({}, commonTranslationMap, imageTranslationMap);
-    } else if (pathname.includes('/inspect')) {
-        activeTranslationMap = Object.assign({}, commonTranslationMap, inspectTranslationMap);
-    } else if (pathname.includes('/stor')) {
-        activeTranslationMap = Object.assign({}, commonTranslationMap, storiesTranslationMap);
-    } else {
-        activeTranslationMap = Object.assign({}, commonTranslationMap, imageTranslationMap, storiesTranslationMap); 
+    // 动态更新词典的方法（修复 SPA 路由切换问题的核心）
+    function updateDictionary() {
+        const pathname = window.location.pathname;
+        if (pathname.includes('/image') || pathname.includes('/imagetools')) {
+            activeTranslationMap = Object.assign({}, commonTranslationMap, imageTranslationMap);
+        } else if (pathname.includes('/inspect')) {
+            activeTranslationMap = Object.assign({}, commonTranslationMap, inspectTranslationMap);
+        } else if (pathname.includes('/stor')) {
+            activeTranslationMap = Object.assign({}, commonTranslationMap, storiesTranslationMap);
+        } else {
+            // 全局包含防漏
+            activeTranslationMap = Object.assign({}, commonTranslationMap, imageTranslationMap, storiesTranslationMap, inspectTranslationMap); 
+        }
+
+        if (Object.keys(activeTranslationMap).length > 0) {
+            const sortedKeys = Object.keys(activeTranslationMap).sort((a, b) => b.length - a.length);
+            const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            regex = new RegExp(sortedKeys.map(escapeRegExp).join('|'), 'g');
+        }
     }
 
-    if (Object.keys(activeTranslationMap).length === 0) return;
-
-    const sortedKeys = Object.keys(activeTranslationMap).sort((a, b) => b.length - a.length);
-    const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    regex = new RegExp(sortedKeys.map(escapeRegExp).join('|'), 'g');
-
     function replaceText(node) {
-        if (node.nodeType !== Node.TEXT_NODE || !node.nodeValue.trim()) return;
+        if (!regex || node.nodeType !== Node.TEXT_NODE || !node.nodeValue.trim()) return;
 
         if (node.parentElement) {
             const tagName = node.parentElement.tagName;
@@ -1131,33 +1135,33 @@
     }
 
     function translateAttributes(node) {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-            // 加入了 data-placeholder, data-empty-text 和 value 属性进行深层拦截扫描，搞定富文本顽固占位符
-            const attributesToTranslate = ['placeholder', 'title', 'aria-label', 'data-placeholder', 'data-empty-text', 'value'];
-            
+        if (!regex || node.nodeType !== Node.ELEMENT_NODE) return;
+        
+        // 加入了 data-placeholder, data-empty-text 和 value 属性进行深层拦截扫描，搞定富文本顽固占位符
+        const attributesToTranslate = ['placeholder', 'title', 'aria-label', 'data-placeholder', 'data-empty-text', 'value'];
+        
+        attributesToTranslate.forEach(attr => {
+            if (node.hasAttribute(attr)) {
+                const val = node.getAttribute(attr);
+                let replacedValue = val.replace(regex, (match) => activeTranslationMap[match]);
+                if (val !== replacedValue) {
+                    node.setAttribute(attr, replacedValue);
+                }
+            }
+        });
+
+        const children = node.querySelectorAll(attributesToTranslate.map(attr => `[${attr}]`).join(', '));
+        children.forEach(child => {
             attributesToTranslate.forEach(attr => {
-                if (node.hasAttribute(attr)) {
-                    const val = node.getAttribute(attr);
+                if (child.hasAttribute(attr)) {
+                    const val = child.getAttribute(attr);
                     let replacedValue = val.replace(regex, (match) => activeTranslationMap[match]);
                     if (val !== replacedValue) {
-                        node.setAttribute(attr, replacedValue);
+                        child.setAttribute(attr, replacedValue);
                     }
                 }
             });
-
-            const children = node.querySelectorAll(attributesToTranslate.map(attr => `[${attr}]`).join(', '));
-            children.forEach(child => {
-                attributesToTranslate.forEach(attr => {
-                    if (child.hasAttribute(attr)) {
-                        const val = child.getAttribute(attr);
-                        let replacedValue = val.replace(regex, (match) => activeTranslationMap[match]);
-                        if (val !== replacedValue) {
-                            child.setAttribute(attr, replacedValue);
-                        }
-                    }
-                });
-            });
-        }
+        });
     }
 
     function translateNode(node) {
@@ -1174,7 +1178,7 @@
 
     function startTranslation() {
         translateNode(document.body);
-        modifyPageTitle(pathname);
+        modifyPageTitle(window.location.pathname);
 
         observer = new MutationObserver(mutations => {
             if (isTranslating) return;
@@ -1227,9 +1231,49 @@
     }
 
     // ==========================================
-    // 4. 脚本入口点
+    // 4. 监听 SPA 路由切换 (修复多页面切换不翻译问题)
     // ==========================================
     
+    let lastPathname = window.location.pathname;
+
+    function handleRouteChange() {
+        const currentPathname = window.location.pathname;
+        if (currentPathname !== lastPathname) {
+            lastPathname = currentPathname;
+            // 1. 网址变更时，重新匹配并更新词典库
+            updateDictionary();
+            // 2. 更新网页标题
+            modifyPageTitle(currentPathname);
+            // 3. 延迟一小段时间，等待新页面的 DOM 框架渲染出来后，手动触发一次全量大扫除翻译
+            setTimeout(() => {
+                if (document.body) {
+                    translateNode(document.body);
+                }
+            }, 500); // 500ms 延迟足以应对大部分框架的渲染
+        }
+    }
+
+    // 拦截原生的路由跳转 API
+    const originalPushState = history.pushState;
+    history.pushState = function () {
+        originalPushState.apply(this, arguments);
+        handleRouteChange();
+    };
+
+    const originalReplaceState = history.replaceState;
+    history.replaceState = function () {
+        originalReplaceState.apply(this, arguments);
+        handleRouteChange();
+    };
+
+    // 监听浏览器的前进、后退按钮
+    window.addEventListener('popstate', handleRouteChange);
+
+    // ==========================================
+    // 5. 脚本入口点
+    // ==========================================
+    
+    updateDictionary(); // 初始加载时分配词典
     updateMenuText();
 
     const checkReady = setInterval(() => {
