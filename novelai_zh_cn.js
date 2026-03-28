@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      3.47
+// @version      3.48
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理
 // @match        https://novelai.net/*
@@ -189,6 +189,22 @@
         'Inconsolata': 'Inconsolata (代码等宽)',
         'Times New Roman': 'Times New Roman (新罗马)',
         'Iosevka': 'Iosevka (紧凑等宽)',
+
+        // --- 用户脚本模态框提示 ---
+        'Some notes about user scripts.': '关于用户脚本的一些注意事项。',
+        'User scripts are custom TypeScript code that can modify and extend NovelAI in various ways. They can add new features or change existing ones. They\'re pretty cool, but there are some important things to keep in mind when using them.': '用户脚本是自定义的 TypeScript 代码，能够以多种方式修改和扩展 NovelAI。它们可以添加新功能或更改现有功能。它们非常酷，但在使用时有一些重要事项需要牢记。',
+        'User scripts are custom TypeScript code that can modify and extend NovelAI in various ways. They can add new features or change existing ones. They’re pretty cool, but there are some important things to keep in mind when using them.': '用户脚本是自定义的 TypeScript 代码，能够以多种方式修改和扩展 NovelAI。它们可以添加新功能或更改现有功能。它们非常酷，但在使用时有一些重要事项需要牢记。',
+        'Security': '安全性',
+        'Only use scripts from sources you trust. Scripts are run in a sandboxed environment and can\'t freely make network requests, but they can do a lot of things within NovelAI. A malicious script could at the very least annoy you, at the worst corrupt your data. Be cautious.': '仅使用您信任的来源的脚本。脚本在沙盒环境中运行，无法自由发出网络请求，但它们可以在 NovelAI 中执行大量操作。恶意脚本至少会给您带来困扰，最坏的情况下会损坏您的数据。请务必谨慎。',
+        'Only use scripts from sources you trust. Scripts are run in a sandboxed environment and can’t freely make network requests, but they can do a lot of things within NovelAI. A malicious script could at the very least annoy you, at the worst corrupt your data. Be cautious.': '仅使用您信任的来源的脚本。脚本在沙盒环境中运行，无法自由发出网络请求，但它们可以在 NovelAI 中执行大量操作。恶意脚本至少会给您带来困扰，最坏的情况下会损坏您的数据。请务必谨慎。',
+        'Performance Impact': '性能影响',
+        'Poorly written scripts can slow down NovelAI or cause instability. If you notice performance issues, try disabling your scripts to see if that helps.': '编写不佳的脚本可能会减慢 NovelAI 的运行速度或导致不稳定。如果您注意到性能问题，请尝试禁用脚本以查看是否有所帮助。',
+        'We can\'t provide support for issues caused by user scripts. If they destroy one of your stories, or cause other problems that isn\'t something we can help with.': '我们无法为由用户脚本引起的问题提供支持。如果它们破坏了您的某个故事，或导致了其他问题，我们将无能为力。',
+        'We can’t provide support for issues caused by user scripts. If they destroy one of your stories, or cause other problems that isn’t something we can help with.': '我们无法为由用户脚本引起的问题提供支持。如果它们破坏了您的某个故事，或导致了其他问题，我们将无能为力。',
+        'By using user scripts, you acknowledge that you understand these risks and agree to use them responsibly.': '使用用户脚本即表示您了解并接受这些风险，并同意负责任地使用它们。',
+        'Got it': '明白了',
+        'No thanks': '不了，谢谢',
+        'Select a script, create a new one, or import one.': '选择一个脚本，创建一个新脚本，或导入一个脚本。',
         
         // --- 新增图像格式与图库选项 ---
         'Image Format for Generated Images': '生成图像的文件格式',
