@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      3.46
+// @version      3.47
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理
 // @match        https://novelai.net/*
@@ -298,6 +298,24 @@
     };
 
     const imageTranslationMap = {
+        // --- 生成首张图片后的恭喜提示 ---
+        'Congratulations!': '恭喜！',
+        'You\'ve successfully generated your first NovelAI image!': '您已成功生成了第一张 NovelAI 图像！',
+        'You’ve successfully generated your first NovelAI image!': '您已成功生成了第一张 NovelAI 图像！',
+        'Now let\'s explore how to customize and improve your creations with a quick tutorial.': '现在，让我们通过一个简短的教程来探索如何自定义和改进您的作品。',
+        'Now let’s explore how to customize and improve your creations with a quick tutorial.': '现在，让我们通过一个简短的教程来探索如何自定义和改进您的作品。',
+        'Now let\'s explore how to customize and improve your creations with a quick ': '现在，让我们探索如何自定义和改进您的作品，请看这个简短的',
+        'Now let’s explore how to customize and improve your creations with a quick ': '现在，让我们探索如何自定义和改进您的作品，请看这个简短的',
+        'Now let\'s explore how to customize and improve your creations with a quick': '现在，让我们探索如何自定义和改进您的作品，请看这个简短的',
+        'Now let’s explore how to customize and improve your creations with a quick': '现在，让我们探索如何自定义和改进您的作品，请看这个简短的',
+        'tutorial.': '教程。',
+        'tutorial': '教程',
+        'Start tutorial': '开始教程',
+        'Start Tutorial': '开始教程',
+        'Start ': '开始 ',
+        'I know what I’m doing, skip this!': '我知道该怎么做，跳过此步！',
+        'I know what I\'m doing, skip this!': '我知道该怎么做，跳过此步！',
+        
         'This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising.': '本网站使用 Cookie 等技术来实现网站的基本功能，以及进行分析、个性化和有针对性的广告。',
         'To learn more, view the following link:': '要了解更多信息，请查看以下链接：',
         'Manage Preferences': '管理偏好',
@@ -861,6 +879,32 @@
         'View Story Stats': '查看故事数据统计',
         'Remote Storage': '云端同步存储',
         'Story is currently stored locally. Locally stored stories may be deleted by your browser after a period of non-use.': '当前故事仅保存在本地。',
+        
+        // --- Remote Storage 模态弹窗及碎句补全 ---
+        'Your account is set to store stories only on your local device. Local storage is not meant to be persistent, and a loss of your stories can occur for a number of reasons and at any time.': '您的账号设置为仅在本地设备上存储故事。本地存储并非永久性存储，在任何时候都可能因各种原因导致故事丢失。',
+        'Your account is set to store stories ': '您的账号设置为将故事',
+        'only on your local device.': '仅限本地设备。',
+        'only on your local device': '仅限本地设备',
+        ' only on your local device.': ' 仅限本地设备。',
+        ' only on your local device': ' 仅限本地设备',
+        '. Local storage is not meant to be persistent, and a loss of your stories can occur for a number of reasons and at any time.': '。本地存储并非永久性存储，在任何时候都可能因各种原因导致故事丢失。',
+        ' Local storage is not meant to be persistent, and a loss of your stories can occur for a number of reasons and at any time.': ' 本地存储并非永久性存储，在任何时候都可能因各种原因导致故事丢失。',
+        'Local storage is not meant to be persistent, and a loss of your stories can occur for a number of reasons and at any time.': '本地存储并非永久性存储，在任何时候都可能因各种原因导致故事丢失。',
+        'We recommend storing your stories on our servers. They are locally encrypted and inaccessible to anyone but you. This setting can also be changed for each story individually.': '我们建议您将故事存储在我们的服务器上。它们在本地加密，除您之外的任何人均无法访问。此设置也可在各个故事的设置中单独更改。',
+        'We recommend storing your stories on our servers.': '我们建议您将故事存储在我们的服务器上。',
+        ' They are locally encrypted and inaccessible to anyone but you. This setting can also be changed for each story individually.': '它们将在本地加密，除您之外的任何人均无法访问。此设置也可在各个故事中单独更改。',
+        'Switch to Remote Storage': '切换至云端同步存储',
+        'Keep Local Storage': '保持本地存储',
+        
+        'Make sure to export and manually back up your stories if you store them locally. You can export all stories in the Account Settings. Switching to remote storage does not move existing stories to our servers automatically, this can be changed in each stories settings individually.': '如果使用本地存储，请务必导出并手动备份您的故事。您可以在账号设置中导出所有故事。切换到云端同步存储不会自动将现有故事移动到服务器上，此操作需要在每个故事的设置中单独进行更改。',
+        'Make sure to export and manually back up your stories if you store them locally. ': '如果使用本地存储，请务必导出并手动备份您的故事。',
+        'Make sure to export and manually back up your stories if you store them locally.': '如果使用本地存储，请务必导出并手动备份您的故事。',
+        'You can export all stories in the ': '您可以在',
+        'You can export all stories in the': '您可以在',
+        '. Switching to remote storage does not move existing stories to our servers automatically, this can be changed in each stories settings individually.': '中导出所有故事。切换到云端同步存储不会自动将现有故事移动到服务器上，此操作需要在各个故事的设置中单独进行更改。',
+        ' Switching to remote storage does not move existing stories to our servers automatically, this can be changed in each stories settings individually.': '切换到云端同步存储不会自动将现有故事移动到服务器上，此操作需要在各个故事的设置中单独进行更改。',
+        'Switching to remote storage does not move existing stories to our servers automatically, this can be changed in each stories settings individually.': '切换到云端同步存储不会自动将现有故事移动到服务器上，此操作需要在各个故事的设置中单独进行更改。',
+
         'Export Story': '导出故事',
         'To File': '导出为文件',
         'As Scenario': '导出为场景',
