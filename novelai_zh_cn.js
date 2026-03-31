@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      4.5
+// @version      4.5.1
 // @description  NovelAI Full Site Localization into Simplified Chinese
-// @author       W是包子N不理
+// @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
 // @icon         https://novelai.net/icons/novelai-round.png
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
-// @downloadURL https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.user.js
-// @updateURL https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.user.js
+// @updateURL    https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.meta.js
 // @license      GPL-3.0-or-later
 // ==/UserScript==
 
@@ -766,7 +766,7 @@
         'Change Default': '更改默认',
         'Config Preset': '配置预设',
         'Edit Preset': '编辑预设',
-        'Changes the settings of the AI model.': '更改 AI 模型的设置。',
+        'Changes the settings of the AI model.': '更改 AI模型的设置。',
         'Default': '默认',
         'Memory': '记忆',
         'The AI will better remember info placed here.': 'AI 将更好地记住放置在此处的信息。',
@@ -1027,7 +1027,7 @@
         'Trim it!': '修剪吧！',
         'Flatten your Story?': '扁平化你的故事？',
         'Are you sure you want to flatten \'New Story\'?': '确定要扁平化“新故事”吗？',
-        'This will delete its entire history.': '这将删除它的整个历史记录。',
+        'This will delete它的 entire history.': '这将删除它的整个历史记录。',
         'Flatten it!': '扁平化！',
         'Reset your Story to Prompt?': '将故事重置为提示词？',
         'Are you sure you want to reset \'New Story\' to its prompt?': '确定要将“新故事”重置为初始提示词吗？',
@@ -1192,9 +1192,8 @@
         'Encoding required. This will cost': '需要编码。下次生成将消耗',
         'on the next generation.': '。',
 
-
         // --- 首页界面 ---
-        'Start for Free!': '免费开始！',
+        'Free!': '免费！',
         'Pricing': '定价',
         'Blog': '博客',
         'Community': '社区',
@@ -1203,7 +1202,7 @@
         'AI Anime Art & Stories': 'AI 动漫艺术与故事',
         'Start For Free Now': '立即免费开始',
         'Unleash the power of AI with a suite of tools to easily bring your imagination to life without limits.': '利用一整套 AI 工具释放强大能力，轻松将您的想象力化为现实，毫无限制。',
-        'Start for': '免费',
+        'Start for': '立即',
         'Now': '开始',
         'Create Anime Art': '创作动漫艺术',
         'Create Stories': '创作故事',
@@ -1265,7 +1264,7 @@
         '* For images of up to 1024x1024 pixels and up to 28 steps when generating a single image.': '* 适用于生成单张图像时尺寸最高 1024x1024 像素、步数最多 28 步的情况。',
         'A text editor built to let AI write': '一款旨在让 AI',
         'with': '与你共同',
-        'you, not': '写作，而不是代',
+        'you, not': '写作，而不是',
         'for': '替',
         'you.': '你写作的文本编辑器。',
         'A writing workspace should feel like home. We give you the freedom to customize and get comfortable.': '写作工作区应该有家的感觉。我们为您提供自由定制的空间，让您倍感舒适。',
@@ -1341,31 +1340,37 @@
     ];
 
     // ==========================================
-    // 4. 翻译核心引擎
+    // 4. 高性能翻译引擎优化
     // ==========================================
 
-    // 需要跳过翻译的标签和区域
-    const ignoreTags = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'NOSCRIPT', 'CODE']);
+    // 严禁进入的标签，彻底略过代码编辑器、样式表、原生富文本框
+    const ignoreTags = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'CODE']);
+    // NovelAI中经常高频变动的核心打字区域
+    const editorSelectors = '.ProseMirror, [contenteditable="true"], .CodeMirror';
+
+    // 判定节点是否属于需要被忽略的范围 (基础判定)
     function isIgnored(node) {
+        if (!node) return true;
         let el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
-        if (!el) return false;
+        if (!el) return true;
         if (ignoreTags.has(el.tagName)) return true;
-        if (el.isContentEditable) return true;
-        if (el.getAttribute && el.getAttribute('contenteditable') === 'true') return true;
-        // 如果是编辑器内部的文字，不进行干预
-        if (el.closest && el.closest('.ProseMirror, [contenteditable="true"]')) return true;
+        if (el.isContentEditable || (el.closest && el.closest(editorSelectors))) return true;
         return false;
     }
 
+    // 执行纯文本翻译逻辑
     function translateTextNode(node) {
         let originalText = node.nodeValue;
         if (!originalText) return;
         let trimmedText = originalText.trim();
         if (!trimmedText) return;
 
-        // 全文精确匹配
-        if (i18n[trimmedText]) {
-            node.nodeValue = originalText.replace(trimmedText, i18n[trimmedText]);
+        // 全文精确匹配，如果匹配上了就立刻替换并退出，防止继续跑正则
+        let exactMatch = i18n[trimmedText];
+        if (exactMatch) {
+            if (originalText !== exactMatch) { // 避免无意义的DOM覆盖
+                node.nodeValue = originalText.replace(trimmedText, exactMatch);
+            }
             return;
         }
 
@@ -1373,28 +1378,29 @@
         for (let i = 0; i < regexI18n.length; i++) {
             let item = regexI18n[i];
             if (item.regex.test(trimmedText)) {
-                node.nodeValue = originalText.replace(trimmedText, trimmedText.replace(item.regex, item.replacement));
+                let replaced = trimmedText.replace(item.regex, item.replacement);
+                if (trimmedText !== replaced) {
+                    node.nodeValue = originalText.replace(trimmedText, replaced);
+                }
                 return;
             }
         }
     }
 
+    // 翻译属性
     function translateAttributes(el) {
-        // 翻译占位符
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             let placeholder = el.getAttribute('placeholder');
             if (placeholder && i18n[placeholder.trim()]) {
                 el.setAttribute('placeholder', i18n[placeholder.trim()]);
             }
         }
-        // 翻译悬浮提示
         if (el.hasAttribute('title')) {
             let title = el.getAttribute('title');
             if (title && i18n[title.trim()]) {
                 el.setAttribute('title', i18n[title.trim()]);
             }
         }
-        // 翻译按钮上的文字
         if (el.tagName === 'INPUT' && (el.type === 'submit' || el.type === 'button') && el.value) {
             let trimmedVal = el.value.trim();
             if (trimmedVal.toLowerCase() === 'submit') {
@@ -1405,28 +1411,59 @@
         }
     }
 
-    function processNode(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            if (!isIgnored(node)) {
-                translateTextNode(node);
+    // TreeWalker 过滤器定义：原生 C++ 级别跳过不需要翻译的 DOM 分支
+    const treeWalkerFilter = {
+        acceptNode: function(node) {
+            let el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+            if (!el) return NodeFilter.FILTER_SKIP;
+            
+            // 如果碰到了代码标签，或者碰到了编辑器层(ProseMirror等)，直接 FILTER_REJECT
+            // 这会导致不仅当前节点被忽略，它的**所有子节点**也会被自动跳过，不用继续往下遍历，极大节省性能！
+            if (ignoreTags.has(el.tagName) || el.isContentEditable || (el.closest && el.closest(editorSelectors))) {
+                return NodeFilter.FILTER_REJECT;
             }
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-            if (isIgnored(node)) return;
-            translateAttributes(node);
-            let child = node.firstChild;
-            while (child) {
-                processNode(child);
-                child = child.nextSibling; // 使用递归遍历
+            return NodeFilter.FILTER_ACCEPT;
+        }
+    };
+
+    // 使用高效率的原生 TreeWalker 取代旧版的 childNodes 递归
+    function processTree(root) {
+        let rootEl = root.nodeType === Node.ELEMENT_NODE ? root : root.parentElement;
+        if (rootEl && (ignoreTags.has(rootEl.tagName) || rootEl.isContentEditable || rootEl.closest(editorSelectors))) {
+            return; // 树根如果就是打字区，直接废弃不用翻译
+        }
+
+        if (root.nodeType === Node.TEXT_NODE) {
+            translateTextNode(root);
+            return;
+        } else if (root.nodeType === Node.ELEMENT_NODE) {
+            translateAttributes(root);
+        }
+
+        // 使用原生 API 构建节点爬虫，极速查找所有文字和元素
+        const walker = document.createTreeWalker(
+            root, 
+            NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, 
+            treeWalkerFilter, 
+            false
+        );
+        
+        let currentNode;
+        while (currentNode = walker.nextNode()) {
+            if (currentNode.nodeType === Node.TEXT_NODE) {
+                translateTextNode(currentNode);
+            } else if (currentNode.nodeType === Node.ELEMENT_NODE) {
+                translateAttributes(currentNode);
             }
         }
     }
 
 
     // ==========================================
-    // 5. DOM 变动监听器
+    // 5. DOM 变动监听器与防抖
     // ==========================================
     let pendingMutations = [];
-    let isTranslating = false;
+    let debounceTimer = null;
 
     const observer = new MutationObserver((mutations) => {
         let hasValidMutations = false;
@@ -1434,56 +1471,55 @@
         for (let i = 0; i < mutations.length; i++) {
             let m = mutations[i];
             let target = m.target;
-
-            // 如果是在编辑器里打字引起的变化，直接跳过
-            if (target.nodeType === Node.ELEMENT_NODE && target.classList.contains('ProseMirror')) continue;
-            if (target.parentElement && target.parentElement.classList.contains('ProseMirror')) continue;
+            
+            // 在 Mutation 层面就直接把富文本编辑器里的打字过滤掉！这能防止把无用的排队塞进 pendingMutations 里。
+            let el = target.nodeType === Node.ELEMENT_NODE ? target : target.parentElement;
+            if (el && (ignoreTags.has(el.tagName) || el.isContentEditable || el.closest(editorSelectors))) {
+                continue; 
+            }
 
             pendingMutations.push(m);
             hasValidMutations = true;
         }
 
-        // 合并多次渲染进行防抖
-        if (hasValidMutations && !isTranslating) {
-            isTranslating = true;
-            requestAnimationFrame(processMutations);
+        // 核心优化：防抖(Debounce) 代替 requestAnimationFrame。
+        // 等页面停下连续抖动(例如你刚按完回车加载)的 80毫秒后，再一口气汉化，彻底释放主线程
+        if (hasValidMutations) {
+            if (debounceTimer) clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(processMutations, 80);
         }
     });
 
     function processMutations() {
+        observer.disconnect(); // 暂时切断监听器，避免脚本自己修改自己引发死循环
+        
         let mutationsToProcess = pendingMutations;
         pendingMutations = [];
-        observer.disconnect();
+        let processedNodes = new Set(); // 记录本次已经处理过的节点，防止同一节点多重重复替换
 
-        for (let i = 0; i < mutationsToProcess.length; i++) {
-            const mutation = mutationsToProcess[i];
-
-            if (mutation.type === 'childList') {
-                for (let j = 0; j < mutation.addedNodes.length; j++) {
-                    processNode(mutation.addedNodes[j]);
+        for (let m of mutationsToProcess) {
+            if (m.type === 'childList') {
+                for (let node of m.addedNodes) {
+                    if (processedNodes.has(node)) continue;
+                    processTree(node); 
+                    processedNodes.add(node);
                 }
-            } else if (mutation.type === 'characterData') {
-                if (!isIgnored(mutation.target)) {
-                    translateTextNode(mutation.target);
+            } else if (m.type === 'characterData') {
+                if (processedNodes.has(m.target)) continue;
+                if (!isIgnored(m.target)) {
+                    translateTextNode(m.target);
                 }
-            } else if (mutation.type === 'attributes') {
-                if (!isIgnored(mutation.target)) {
-                    let node = mutation.target;
-                    if (mutation.attributeName === 'placeholder' || mutation.attributeName === 'title' || mutation.attributeName === 'value') {
-                        translateAttributes(node);
-                    }
+                processedNodes.add(m.target);
+            } else if (m.type === 'attributes') {
+                if (processedNodes.has(m.target)) continue;
+                if (!isIgnored(m.target)) {
+                    translateAttributes(m.target);
                 }
+                processedNodes.add(m.target);
             }
         }
 
-        observe();
-        isTranslating = false;
-
-        // 如果处理期间又有新节点生成，确保不会漏翻
-        if (pendingMutations.length > 0) {
-            isTranslating = true;
-            requestAnimationFrame(processMutations);
-        }
+        observe(); // 重新连接监听
     }
 
     function observe() {
@@ -1496,8 +1532,8 @@
         });
     }
 
-
-    processNode(document.body);
+    // 脚本启动时，全页执行一次快速遍历汉化
+    processTree(document.body);
     observe();
 
 })();
