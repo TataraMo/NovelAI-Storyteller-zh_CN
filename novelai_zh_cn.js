@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      4.6
+// @version      4.5.5
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -1717,7 +1717,7 @@
         }
 
         // 核心优化：防抖(Debounce) 代替 requestAnimationFrame。
-        // 等页面停下连续抖动(例如你刚按完回车加载)的 80毫秒后，再一口气汉化，彻底释放主线程
+        // 等页面停下连续抖动的 80毫秒后，再一口气汉化，彻底释放主线程
         if (hasValidMutations) {
             if (debounceTimer) clearTimeout(debounceTimer);
             debounceTimer = setTimeout(processMutations, 80);
