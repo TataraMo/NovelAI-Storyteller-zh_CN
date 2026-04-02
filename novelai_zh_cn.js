@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      4.7.1
+// @version      4.7.3
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -1595,7 +1595,7 @@
         ', especailly if you use Local Storage and your browser cache get cleared, or if you lose access to your account.': '，特别是如果您使用本地存储并且浏览器缓存被清空，或者您失去了对帐户的访问权限时。',
         'Dinkuses (***) and asterisms (⁂) can appear too often. You can apply the Default Bias in': '分隔符（***）和星号（⁂）可能会过于频繁地出现。您可以在以下位置应用默认偏置：',
         'Text inside the Author\'s Note will make the AI strongly focus on that detail. Be careful, it\'s stronger than you think!': '写在“作者注”里的文本会让 AI 强烈关注该细节。请小心使用，它的作用比您想象的还要强大！',
-        'NovelAI features text-to-speech integration. You can configure it in the': 'NovelAI 整合了文本转语音功能。您可以在以下位置进行配置：'
+        'NovelAI features text-to-speech integration. You can configure it in the': 'NovelAI 整合了文本转语音功能。您可以在以下位置进行配置：',
         'Updates': '功能迭代时间线',
     };
 
