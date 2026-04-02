@@ -1435,7 +1435,7 @@
         'AI Storytelling': 'AI 辅助创作',
         'to export it a .png image file!': '将其导出为内含数据的 .png 图像文件！',
         'Filter': '筛选',
-        'Text within the Context Viewer is color coded by origin: Memory, Author's Note, Lorebook, Ephemeral Context or Story. If you prefer it to all be one color, you can disable this option in the': '透视仪里的文字五彩斑斓，那是为了区分它们的来源。要是嫌花里胡哨，想统一切成单色，可以在这关掉它：',
+        'Text within the Context Viewer is color coded by origin: Memory, Author\'s Note, Lorebook, Ephemeral Context or Story. If you prefer it to all be one color, you can disable this option in the': '透视仪里的文字五彩斑斓，那是为了区分它们的来源。要是嫌花里胡哨，想统一切成单色，可以在这关掉它：',
         'Brain': '大脑',
         'Streamed Text-to-Speech Seeds': '云端流式语音声纹种子',
         'Text in the Editor is color-coded to show where the text came from. AI generations and user input / edits are all uniquely color coded. Edit the colors in the': '为了防伪，编辑器里的文字被染上了专属色彩。AI 写的、你亲自敲的、事后修改的，全都有不同的颜色标记。看腻了？去这里改：',
