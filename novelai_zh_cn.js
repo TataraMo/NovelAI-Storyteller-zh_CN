@@ -1385,7 +1385,7 @@
         'Repetition Penalty Range': '复读惩罚范围',
         'The': '该',
         'Streamed AI Responses': '逐字流式响应',
-        'If you ever need help don't be afraid to send us an email at support@novelai.net! More assistance can also be found on our Twitter, Discord and Reddit.': '要是遇到了搞不定的问题，别害羞，直接发邮件到 support@novelai.net 摇人！我们的推特、Discord 和 Reddit 社区也随时恭候您。',
+        'If you ever need help don\'t be afraid to send us an email at support@novelai.net! More assistance can also be found on our Twitter, Discord and Reddit.': '要是遇到了搞不定的问题，别害羞，直接发邮件到 support@novelai.net 摇人！我们的推特、Discord 和 Reddit 社区也随时恭候您。',
         'menu. The Advanced Tutorial is available there too!': '菜单中随时回顾。那里还藏着进阶教程哦！',
         'Lorebook Import': '导入世界书',
         'As Randomness increases, so do chances for less likely words. While this can make text more interesting, it can also make it less accurate. Balance is key!': '文本发散度越高，AI 越爱飙一些生僻奇诡的词。这确实能让行文张力拉满，但也极易导致逻辑暴走。在疯癫与严谨间寻找平衡吧！',
