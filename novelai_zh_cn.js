@@ -1587,7 +1587,7 @@
         'Interface Settings': '界面偏好',
         'Makes the Repetition Penalty Range dynamic, setting it based on where the story text starts. This makes things more likely to be repeated from Memory, sometimes verbatim.': '让惩罚范围动态伸缩。这样能巧妙避开对“长期记忆”的误伤，让 AI 更有可能原汁原味地复诵你埋在记忆里的关键设定。',
         ". Keys don't expire until used!": '。密钥在兑换前永久有效！',
-        '. Sort and filter results with': '。通过以下功能对结果进行排序和筛选：'
+        '. Sort and filter results with': '。通过以下功能对结果进行排序和筛选：',
         'Updates': '功能迭代时间线',
     };
 
