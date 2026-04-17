@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      4.7.5
+// @version      4.7.6
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -766,7 +766,7 @@
         'View All Scenarios': '浏览剧本大全',
         'Click Here': '猛击这里',
         'The Mysterious Note': '无名纸条疑云',
-        'by': '作者:',
+        'by': ':',
         'mystery': '悬疑',
         'detective': '侦探',
         'You are a private detective proud of your problem solving skills and the experience to back it up, but this latest case is your hardest one yet.': '你曾凭借出众的推理本能与老辣的江湖经验，在私家侦探界混得风生水起。但眼前这桩烫手的新案子，却成了你职业生涯中无法逾越的高墙。',
@@ -856,10 +856,10 @@
         'Text is translated into tokens for the AI to understand. They are similar to syllables.': '文本会被切碎成“词元”，这就好比人类语言里的音节，AI 只认这个。',
         'Generate a random title for the story': '让 AI 灵光一闪，赐个标题',
         'Transform': '句式重构',
-        'Expand': '注水扩写',
+        'Expand': '内容扩写',
         'Condense': '提炼精简',
-        'Rewrite Style': '风格重写',
-        'Custom': '私人订制',
+        'Rewrite Style': '风格转换',
+        'Custom': '自定义',
         'Make the text': '让这段文字变得',
         'kinda': '略微',
         'Adjust': '微调倾向',
