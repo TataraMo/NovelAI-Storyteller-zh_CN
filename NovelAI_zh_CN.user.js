@@ -6,7 +6,7 @@
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
 // @icon         https://novelai.net/icons/novelai-round.png
-// @require      https://raw.githubusercontent.com/TataraMo/NovelAI-Localization-zh_CN/refs/heads/main/NovelAi_I18N.js
+// @require      https://update.greasyfork.org/scripts/575188/1807016/NovelAi_I18N.js
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
