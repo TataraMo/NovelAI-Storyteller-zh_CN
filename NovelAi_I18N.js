@@ -1,6 +1,3 @@
-// ==/UserScript==
-
-
 var NAI_I18N = {};
 
 // 1. 静态精准匹配词库 (Static)
