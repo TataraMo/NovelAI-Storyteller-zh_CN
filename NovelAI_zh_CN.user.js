@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      5.0.1
+// @version      5.0.0
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
 // @icon         https://novelai.net/icons/novelai-round.png
-// @require      https://cdn.jsdelivr.net/gh/TataraMo/NovelAI-Localization-zh_CN@main/NovelAi_I18N.js
+// @require      https://update.greasyfork.org/scripts/575188/1807033/NovelAi_I18N.js
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
