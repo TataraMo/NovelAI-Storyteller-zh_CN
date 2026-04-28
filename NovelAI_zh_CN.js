@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      5.1.0
+// @version      5.1.1
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -1491,6 +1491,54 @@
         'Dice': '骰子',
         'Inputs': '输入',
         'Updates': '更新',
+
+        
+        'Payment Due': '付款到期',
+        'Your subscription renewal payment has failed.': '您的订阅续期付款失败。',
+        'Please update your payment method to not lose access.': '请更新您的付款方式以免失去访问权限。',
+        'Update Payment Method': '更新付款方式',
+        'only on your local device': '本地设备上存储故事',
+        'Your account is set to store stories': '您的账户设置为仅在',
+        'Local storage is not meant to be persistent, and a loss of your stories can occur for a number of reasons and at any time.': '本地存储并非永久性的，您的故事可能会因各种原因随时发生丢失。',
+
+
+        'We recommend storing your stories on our servers. They are locally encrypted and inaccessible to anyone but you. This setting can also be changed for each story individually.': '我们建议将您的故事存储在我们的服务器上。它们经过本地加密，除了您之外任何人都无法访问。此设置也可以针对每个故事单独更改。',
+        'Make sure to export and manually back up your stories if you store them locally. You can export all stories in the Account Settings. Switching to remote storage does not move existing stories to our servers automatically, this can be changed in each stories settings individually.': '如果您将故事存储在本地，请确保导出并手动备份您的故事。您可以在账户设置中导出所有故事。切换到远程存储不会自动将现有故事移动到我们的服务器，这可以在每个故事的设置中单独更改。',
+        'Email Unverified': '邮箱未验证',
+        'Confirm': '确认',
+        'Details changed! A confirmation email has been sent to your new email address.': '详细信息已更改！一封确认邮件已发送到您的新邮箱地址。',
+
+        'If an account with that email exists': '如果存在使用该邮箱的账户',
+        'we will send an email to': '我们将发送一封电子邮件至',
+        'If an account with that email exists': '如果存在使用该邮箱的账户',
+
+        'Please note that you cannot use our account recovery for accounts created via our "Sign in with Google" button.': '请注意，对于通过我们的“使用 Google 登录”按钮创建的账户，您无法使用我们的账户恢复功能。',
+
+        'Recovery Token': '恢复令牌',
+        'Repeat New Password': '重复新密码',
+        'Note: Due to local encryption, resetting your password results in permanently losing access to your remotely stored stories.': '注意：由于本地加密，重置密码将导致永久失去对远程存储故事的访问权限。',
+
+        'Your account': '您的账户',
+        'has been reset, and your remotely stored stories have been deleted. You can now': '已被重置，您远程存储的故事已被删除。您现在可以',
+        'log in': '登录',
+
+        'Please update your payment method to not lose access.': '请更新您的付款方式以免失去访问权限。',
+        'Cannot set access key to the same access key': '无法将访问密钥设置为相同的访问密钥',
+
+        'Login will not be remembered': '不会记住登录状态',
+        'Confirm your email': '确认您的邮箱',
+        'We’ve updated our Terms of Service to explain how we temporarily cache encrypted input images to improve performance.': '我们更新了服务条款，以解释我们如何临时缓存加密的输入图像以提高性能。',
+        'Learn more': '了解更多',
+        'View Terms': '查看条款',
+
+        'Like what you see?': '喜欢您看到的内容吗？',
+        'Create an account to start.': '创建账号以开始。',
+        'Register for free and unlock 50 text generation actions.': '免费注册并解锁 50 次文本生成操作。',
+        'Already have an account?': '已有账号？',
+
+        'Last used': '上次使用',
+        'Send Confirmation Email': '发送确认邮件',
+        'Verify your email to gain 50 free actions.': '验证您的邮箱以获得 50 次免费操作。',
     }));
 
     // ==========================================
