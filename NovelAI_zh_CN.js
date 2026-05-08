@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      5.1.1
+// @version      5.2.0
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -199,9 +199,9 @@
         'Only available in Editor V2.': '仅在 Editor V2 中可用。',
         'Highlight': '高亮',
         'Inverted': '反转',
-        'Show Identicon': '显示 Identicon',
-        'A unique identicon will be shown for your account.': '您的帐户将显示唯一的 identicon 头像。',
-        'A theme-specific default avatar will be shown for your account.': '您的帐户将显示特定于主题的默认头像。',
+        'Show Identicon': '显示身份图标',
+        'A unique identicon will be shown for your account.': '将为您的账号显示一个专属的身份图标。',
+        'A theme-specific default avatar will be shown for your account.': '将为您的账号显示特定主题的默认头像。',
         'Show Minibar (Desktop Only)': '显示迷你栏 (仅限桌面)',
         'The minibar will display on the left side of the screen.': '迷你栏将显示在屏幕左侧。',
         'The minibar will not be displayed.': '迷你栏将不会显示。',
@@ -408,7 +408,6 @@
         'Manage Account': '管理帐户',
         'Latest News': '最新消息',
         'Read More': '阅读更多',
-        'Welcome back, Author': '欢迎回来，Author',
 
         // --- 主页/引导 ---
         'Continue a Story': '继续故事',
@@ -1254,7 +1253,6 @@
         '(Reset to Default)': '(重置为默认值)',
         'Remove': '移除',
         'Unsaved Changes': '未保存的更改',
-        'Author': '作者',
         'New Config': '新配置',
         'Total Account': '账户总计',
         'Total Story': '故事总计',
@@ -1492,7 +1490,6 @@
         'Inputs': '输入',
         'Updates': '更新',
 
-        
         'Payment Due': '付款到期',
         'Your subscription renewal payment has failed.': '您的订阅续期付款失败。',
         'Please update your payment method to not lose access.': '请更新您的付款方式以免失去访问权限。',
@@ -1521,6 +1518,53 @@
         'Your account': '您的账户',
         'has been reset, and your remotely stored stories have been deleted. You can now': '已被重置，您远程存储的故事已被删除。您现在可以',
         'log in': '登录',
+
+        // --- 订阅与账户 ---
+        'Reactivate Subscription': '重新激活订阅',
+        'Like what you see?': '喜欢您看到的内容吗？',
+        'Create an account to start.': '创建账号，立即开始。',
+
+        // --- 支付方式 ---
+        'Credit Card': '信用卡',
+
+        // --- 卡片信息 ---
+        'Card Information': '卡片信息',
+        'First Name': '名字',
+        'Last Name': '姓氏',
+        'This field is required.': '此项为必填项。',
+        'Activate': '激活',
+        'Invalid card': '无效的卡片',
+        'Expired card': '卡片已过期',
+        'Invalid expiration date.': '无效的到期日。',
+        'Invalid card verification code (CVC).': '无效的安全码。',
+        'First name is invalid.': '名字无效。',
+        'Last name is invalid.': '姓氏无效。',
+
+
+        // --- 账单地址 ---
+        'Billing Address': '账单地址',
+        'Address Line 1': '地址行 1',
+        'Address Line 1 is required.': '地址行 1 为必填项。',
+        'Address Line 2': '地址行 2',
+        'City': '城市',
+        'City is required.': '城市为必填项。',
+        'Zip/Postal Code': '邮编',
+        'Zip/Postal Code is required.': '邮编为必填项。',
+
+        // --- 记录 ---
+        'Request History': '请求记录',
+
+        // --- 密钥/令牌管理 ---
+        'Overwrite Persistent API Token': '覆盖永久访问令牌',
+        'You have an existing persistent API token. Creating a new one will invalidate the old one.': '您当前已有一个永久访问令牌。创建新令牌将导致旧令牌失效。',
+        'Are you sure you want to overwrite it?': '确定要覆盖吗？',
+        'Overwrite': '覆盖',
+
+        'Persistent API Token': '永久访问令牌',
+        'Below is a persistent API token that can be used to access the API.': '以下是可以用来调用接口的永久访问令牌。',
+
+        'Show Full Token': '显示完整令牌',
+        'Note: You can only have a single persistent token at a time. Creating a new one will invalidate the old one. You will not be able to view this token again after closing this window.': '注意：您同时只能拥有一个永久访问令牌。创建新令牌将使旧令牌失效。关闭此窗口后，您将无法再次查看该令牌。',
 
         'Please update your payment method to not lose access.': '请更新您的付款方式以免失去访问权限。',
         'Cannot set access key to the same access key': '无法将访问密钥设置为相同的访问密钥',
@@ -1563,6 +1607,7 @@
         { regex: /^Set Character (\d+)’s Position$/, replacement: "设置角色 $1 的位置" },
         { regex: /^Character (\d+)$/, replacement: "角色 $1" },
         { regex: /^(\d+\/\d+) image generations remaining\.$/, replacement: '剩余 $1 次图像生成。' },
+        { regex: /^Welcome\s+back,\s+(.*?)$/i, replacement: '欢迎回来，$1' },
 
         // ==========================================
         // 动态时间与“最后编辑”正则匹配
@@ -1593,6 +1638,8 @@
         { regex: /^History \((\d+) Images?\)$/, replacement: '历史记录（$1 张图片）' },
         { regex: /^Last Saved On: (.*?) @ (.*?)$/, replacement: '最后保存时间:$1 @ $2' },
         { regex: /^Your subscription renews around (.*?) @ (.*?)\.?$/i, replacement: '您的订阅将于 $1 @ $2 左右续期。' },
+        { regex: /^Your subscription ends on (.*?) @ (.*?) and does not renew\.?$/i, replacement: '您的订阅将于 $1 @ $2 结束，且不会自动续期。' },
+        { regex: /^Your\s+subscription\s+ends\s+on\s+(.*?)\s+@\s+(.*?)\s+and\s+does\s+not\s+renew\.?$/i, replacement: '您的订阅将于 $1 @ $2 结束，且不会自动续期。' },
     ];
 
     // ==========================================
