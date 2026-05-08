@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      5.2.0
+// @version      5.3.0
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -13,6 +13,7 @@
 // @updateURL    https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.meta.js
 // @license      GPL-3.0-or-later
 // ==/UserScript==
+
 
 (function() {
     'use strict';
@@ -1539,6 +1540,11 @@
         'Invalid card verification code (CVC).': '无效的安全码。',
         'First name is invalid.': '名字无效。',
         'Last name is invalid.': '姓氏无效。',
+        'Subscribe to': '订阅',
+        'After subscribing you will be charged every 30 days.': '订阅后将每 30 天自动扣费一次。',
+        'Pay $25.00 and Subscribe': '支付 $25.00 并订阅',
+        'Pay $10.00 and Subscribe': '支付 $10.00 并订阅',
+        'Pay $15.00 and Subscribe': '支付 $15.00 并订阅',
 
 
         // --- 账单地址 ---
@@ -1583,6 +1589,7 @@
         'Last used': '上次使用',
         'Send Confirmation Email': '发送确认邮件',
         'Verify your email to gain 50 free actions.': '验证您的邮箱以获得 50 次免费操作。',
+        'Email Confirmed.': '邮箱已验证。',
     }));
 
     // ==========================================
