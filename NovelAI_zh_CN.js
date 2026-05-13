@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovelAI 简体中文全局汉化
 // @namespace    https://github.com/TataraMo/NovelAI-Localization-zh_CN
-// @version      5.3.0
+// @version      5.4.0
 // @description  NovelAI Full Site Localization into Simplified Chinese
 // @author       W是包子N不理, Optimized by Assistant
 // @match        https://novelai.net/*
@@ -13,7 +13,6 @@
 // @updateURL    https://update.greasyfork.org/scripts/571008/NovelAI%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E5%85%A8%E5%B1%80%E6%B1%89%E5%8C%96.meta.js
 // @license      GPL-3.0-or-later
 // ==/UserScript==
-
 
 (function() {
     'use strict';
@@ -474,7 +473,7 @@
         'N/A': 'N/A',
         'Sampler': '采样器',
         'Euler Ancestral': 'Euler Ancestral',
-        'Generate 1 Image': '生成 1 张图像',
+
         'Anlas': 'Anlas',
         'Get Started': '快速开始',
         'Get Inspiration from our quick start gallery!': '从我们的快速入门画廊中获取灵感！',
@@ -1590,6 +1589,39 @@
         'Send Confirmation Email': '发送确认邮件',
         'Verify your email to gain 50 free actions.': '验证您的邮箱以获得 50 次免费操作。',
         'Email Confirmed.': '邮箱已验证。',
+
+        // --- 笔刷/填充图案样式 ---
+        'Solid': '纯色',
+        'Lines': '线条',
+        'Crosshatch': '交叉线',
+        'Dots': '点状',
+        'Grid': '网格',
+        'Checker': '棋盘格',
+        'Hearts': '心形',
+
+        // --- 选区工具 ---
+        'Focused Area Selection': '聚焦区域选择',
+        'Focused': '聚焦',
+        'Area': '区域',
+        'Selection': '选择',
+
+
+        // --- 图像尺寸/比例 ---
+        'Normal Landscape': '常规横图',
+        'Normal Square': '常规方图',
+        'Large Portrait': '大竖图',
+        'Large Landscape': '大横图',
+        'Large Square': '大方图',
+        'Wallpaper Portrait': '壁纸竖图',
+        'Wallpaper Landscape': '壁纸横图',
+        'Small Portrait': '小竖图',
+        'Small Landscape': '小横图',
+        'Small Square': '小方图',
+
+        // --- 图像操作按钮 ---
+        'Use as Base': '作为底图',
+        'Variations': '变体',
+        'WebP (Lossless)': 'WebP (无损)',
     }));
 
     // ==========================================
@@ -1647,6 +1679,9 @@
         { regex: /^Your subscription renews around (.*?) @ (.*?)\.?$/i, replacement: '您的订阅将于 $1 @ $2 左右续期。' },
         { regex: /^Your subscription ends on (.*?) @ (.*?) and does not renew\.?$/i, replacement: '您的订阅将于 $1 @ $2 结束，且不会自动续期。' },
         { regex: /^Your\s+subscription\s+ends\s+on\s+(.*?)\s+@\s+(.*?)\s+and\s+does\s+not\s+renew\.?$/i, replacement: '您的订阅将于 $1 @ $2 结束，且不会自动续期。' },
+        { regex: /^Generate (\d+) Images?$/, replacement: '生成 $1 张图像' },
+        { regex: /^Generate Images$/, replacement: '生成图像' },
+        { regex: /^\((\d+)\s*Images?\)$/i, replacement: '（$1 张图片）' },
     ];
 
     // ==========================================
